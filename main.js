@@ -12,11 +12,10 @@ const options = {
     headers: {'X-Api-Key': Apikey}
 }
 
-
 const ApiUrl = "https://api.api-ninjas.com/v1/jokes?limit=1";
 
 //function to fetch data from an Api
-const handleSubmit = async () => {
+const fetchpost = async () => {
     try {
 
         JokeEl.innerHTML = "Updating...";
@@ -25,7 +24,11 @@ const handleSubmit = async () => {
 
         //fetching the data from the api
         const response = await fetch(ApiUrl, options);
+
+    
         const data = await response.json();
+
+        console.log(data);
 
         JokeEl.innerHTML = data[0].joke;
         btnEl.disabled = false;
@@ -33,7 +36,7 @@ const handleSubmit = async () => {
     
     } catch (error) {
     
-        JokeEl.innerHTML = "this  code encountered an Error, pls kindly Reload";
+        JokeEl.innerHTML = "An Error occurred please retry the operation again";
         btnEl.innerHTML = "click for a joke";
         btnEl.diasbled = false;
 
@@ -41,4 +44,4 @@ const handleSubmit = async () => {
 }
 
 //adding event listener to the button Element
-btnEl.addEventListener("click", handleSubmit);
+btnEl.addEventListener("click", fetchpost);
