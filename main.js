@@ -5,7 +5,7 @@ const btnEl = document.getElementById("generateBtn");
 const JokeEl = document.getElementById("joke");
 
 //Api key
-const Apikey = "J4mvYJwDowKvF4OZYFMUlg==vq5WXsFp6lPJF1S";
+const Apikey = "J4mvYJwDowKvF4OZYFMUlg==vq5WXsFp6lPJF1Sw";
 
 const options = {
     method: "GET",
@@ -30,16 +30,12 @@ const handleSubmit = async () => {
         JokeEl.innerHTML = data[0].joke;
         btnEl.disabled = false;
         btnEl.innerText = "click for a joke";
-
-
-
     
     } catch (error) {
-        const Err = await error.json();
     
-        JokeEl.innerHTML = `this  code encountered an ${Err.message} Error, pls kindly Reload`;
+        JokeEl.innerHTML = "this  code encountered an Error, pls kindly Reload";
         btnEl.innerHTML = "click for a joke";
-
+        btnEl.diasbled = false;
 
    }
 }
